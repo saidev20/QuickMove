@@ -1,0 +1,398 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #F5EDE0;
+    --bg-secondary: #FEFCF9;
+    --bg-surface: #FFFFFF;
+    --bg-surface-hover: #FBF6EE;
+    --bg-inset: #EBE0CE;
+    --border-primary: #D4C8B8;
+    --border-secondary: #EBE0CE;
+    --text-primary: #1A1614;
+    --text-secondary: #6B5E54;
+    --text-tertiary: #9C8B78;
+    --text-inverse: #FEFCF9;
+    --accent: #4F46E5;
+    --accent-hover: #4338CA;
+    --accent-light: #EEF2FF;
+    --accent-text: #3730A3;
+    --success: #059669;
+    --success-bg: #ECFDF5;
+    --warning: #D97706;
+    --warning-bg: #FFFBEB;
+    --error: #DC2626;
+    --error-bg: #FEF2F2;
+    --info: #2563EB;
+    --info-bg: #EFF6FF;
+    --sidebar-width: 260px;
+  }
+
+  .dark {
+    --bg-primary: #0C0A09;
+    --bg-secondary: #1C1917;
+    --bg-surface: #1C1917;
+    --bg-surface-hover: #292524;
+    --bg-inset: #292524;
+    --border-primary: #44403C;
+    --border-secondary: #292524;
+    --text-primary: #FAFAF9;
+    --text-secondary: #A8A29E;
+    --text-tertiary: #78716C;
+    --text-inverse: #0C0A09;
+    --accent: #818CF8;
+    --accent-hover: #6366F1;
+    --accent-light: #1E1B4B;
+    --accent-text: #A5B4FC;
+    --success: #34D399;
+    --success-bg: #064E3B;
+    --warning: #FBBF24;
+    --warning-bg: #78350F;
+    --error: #F87171;
+    --error-bg: #7F1D1D;
+    --info: #60A5FA;
+    --info-bg: #1E3A5F;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: white;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+  }
+
+  input, select, textarea, button {
+    font-family: inherit;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-150 ease-out cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -4px rgba(79, 70, 229, 0.4);
+  }
+
+  .btn-secondary {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--bg-surface-hover);
+    border-color: var(--text-tertiary);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-primary);
+  }
+
+  .btn-danger {
+    background-color: var(--error);
+    color: white;
+  }
+  .btn-danger:hover:not(:disabled) {
+    background-color: #B91C1C;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-icon {
+    @apply p-2;
+  }
+
+  .card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-secondary);
+    border-radius: 0.75rem;
+    transition: all 0.15s ease-out;
+  }
+
+  .card-hover:hover {
+    border-color: var(--border-primary);
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+
+  .input {
+    @apply w-full px-3 py-2 text-sm rounded-lg transition-colors duration-150;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+  }
+  .input::placeholder {
+    color: var(--text-tertiary);
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+  }
+
+  .label {
+    @apply block text-sm font-medium mb-1.5;
+    color: var(--text-secondary);
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full;
+  }
+
+  .badge-success {
+    background-color: var(--success-bg);
+    color: var(--success);
+  }
+  .badge-warning {
+    background-color: var(--warning-bg);
+    color: var(--warning);
+  }
+  .badge-error {
+    background-color: var(--error-bg);
+    color: var(--error);
+  }
+  .badge-info {
+    background-color: var(--info-bg);
+    color: var(--info);
+  }
+  .badge-neutral {
+    background-color: var(--bg-inset);
+    color: var(--text-secondary);
+  }
+
+  .stat-card {
+    @apply card p-5;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-150;
+    color: var(--text-secondary);
+  }
+  .sidebar-link:hover {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-primary);
+  }
+  .sidebar-link.active {
+    background-color: var(--accent-light);
+    color: var(--accent);
+  }
+  .dark .sidebar-link.active {
+    color: var(--accent-text);
+  }
+
+  .tab {
+    @apply px-4 py-2 text-sm font-medium transition-all duration-150 border-b-2 border-transparent cursor-pointer;
+    color: var(--text-secondary);
+  }
+  .tab:hover {
+    color: var(--text-primary);
+  }
+  .tab.active {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .overlay {
+    @apply fixed inset-0 z-50;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.15s ease-out;
+  }
+
+  .modal {
+    @apply card p-0 overflow-hidden;
+    box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.15);
+    animation: scaleIn 0.15s ease-out;
+  }
+
+  .dropdown {
+    @apply card p-1;
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.12);
+    animation: slideUp 0.15s ease-out;
+  }
+
+  .dropdown-item {
+    @apply flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-colors duration-100 cursor-pointer;
+    color: var(--text-primary);
+  }
+  .dropdown-item:hover {
+    background-color: var(--bg-surface-hover);
+  }
+
+  .kanban-column {
+    @apply flex flex-col gap-2 min-h-[350px] p-3.5 rounded-xl flex-shrink-0;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-secondary);
+    width: 310px;
+    min-width: 310px;
+    max-width: 310px;
+  }
+
+  .kanban-card {
+    @apply card p-3 cursor-grab active:cursor-grabbing;
+  }
+  .kanban-card:hover {
+    border-color: var(--border-primary);
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--bg-inset);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+  }
+
+  .timeline-item {
+    @apply relative pl-8 pb-6;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 24px;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-secondary);
+  }
+  .timeline-item:last-child::before {
+    display: none;
+  }
+
+  .timeline-dot {
+    @apply absolute left-1.5 top-1.5 w-4 h-4 rounded-full border-2;
+    border-color: var(--border-primary);
+    background-color: var(--bg-surface);
+  }
+  .timeline-dot.completed {
+    background-color: var(--success);
+    border-color: var(--success);
+  }
+  .timeline-dot.overdue {
+    background-color: var(--error);
+    border-color: var(--error);
+  }
+  .timeline-dot.blocked {
+    background-color: var(--warning);
+    border-color: var(--warning);
+  }
+  .timeline-dot.upcoming {
+    background-color: var(--info);
+    border-color: var(--info);
+  }
+
+  .progress-bar {
+    @apply w-full h-2 rounded-full overflow-hidden;
+    background-color: var(--bg-inset);
+  }
+  .progress-bar-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+
+  .chat-bubble {
+    @apply p-3 rounded-xl text-sm max-w-[85%];
+  }
+  .chat-bubble.user {
+    background-color: var(--accent);
+    color: white;
+    border-bottom-right-radius: 4px;
+    margin-left: auto;
+  }
+  .chat-bubble.assistant {
+    background-color: var(--bg-inset);
+    color: var(--text-primary);
+    border-bottom-left-radius: 4px;
+  }
+
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-16 text-center;
+    color: var(--text-tertiary);
+  }
+
+  .table-row {
+    @apply transition-colors duration-100;
+    border-bottom: 1px solid var(--border-secondary);
+  }
+  .table-row:hover {
+    background-color: var(--bg-surface-hover);
+  }
+}
+
+@layer utilities {
+  .text-primary { color: var(--text-primary); }
+  .text-secondary { color: var(--text-secondary); }
+  .text-tertiary { color: var(--text-tertiary); }
+  .text-accent { color: var(--accent); }
+  .bg-primary { background-color: var(--bg-primary); }
+  .bg-secondary { background-color: var(--bg-secondary); }
+  .bg-surface { background-color: var(--bg-surface); }
+  .bg-inset { background-color: var(--bg-inset); }
+  .border-default { border-color: var(--border-primary); }
+  .border-subtle { border-color: var(--border-secondary); }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
