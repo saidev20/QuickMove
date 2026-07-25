@@ -306,6 +306,14 @@
     background: var(--text-tertiary);
   }
 
+  .top-scrollbar-container {
+    overflow-x: auto;
+    transform: rotateX(180deg);
+  }
+  .top-scrollbar-content {
+    transform: rotateX(180deg);
+  }
+
   .timeline-item {
     @apply relative pl-8 pb-6;
   }

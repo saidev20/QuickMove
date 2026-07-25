@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   ArrowLeft, MapPin, ArrowRight, Calendar, Phone, Mail, Users as UsersIcon,
-  Home, DollarSign, FileText, Zap, CheckCircle2, Clock, AlertTriangle,
+  Home, IndianRupee, FileText, Zap, CheckCircle2, Clock, AlertTriangle,
   ChevronDown, ChevronRight, Upload, Trash2, ExternalLink, Sparkles, Send, Truck, ShieldCheck, Bot,
 } from 'lucide-react';
 import { api } from '@/lib/api';
@@ -290,8 +290,8 @@ export default function CustomerDetail() {
             <span>{customer.apartment_preference}</span>
           </div>
           <div className="flex items-center gap-2">
-            <DollarSign size={14} style={{ color: 'var(--accent)' }} />
-            <span>{customer.budget}/month</span>
+            <IndianRupee size={14} style={{ color: 'var(--accent)' }} />
+            <span>₹{customer.budget}/month</span>
           </div>
         </div>
       </div>

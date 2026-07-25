@@ -445,21 +445,23 @@ export default function KanbanBoard() {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
-        <div className="flex gap-4 overflow-x-auto pb-6 pt-1 -mx-2 px-2 custom-scrollbar">
-          {COLUMNS.map(col => {
-            const tasks = kanban?.[col.key] || [];
-            return (
-              <KanbanColumnContainer
-                key={col.key}
-                col={col}
-                tasks={tasks}
-                selectMode={selectMode}
-                selectedIds={selectedIds}
-                onToggleSelect={toggleSelect}
-                onDeleteTask={(id) => deleteTaskMutation.mutate(id)}
-              />
-            );
-          })}
+        <div className="top-scrollbar-container custom-scrollbar pt-2 pb-6 -mx-2 px-2">
+          <div className="top-scrollbar-content flex gap-4">
+            {COLUMNS.map(col => {
+              const tasks = kanban?.[col.key] || [];
+              return (
+                <KanbanColumnContainer
+                  key={col.key}
+                  col={col}
+                  tasks={tasks}
+                  selectMode={selectMode}
+                  selectedIds={selectedIds}
+                  onToggleSelect={toggleSelect}
+                  onDeleteTask={(id) => deleteTaskMutation.mutate(id)}
+                />
+              );
+            })}
+          </div>
         </div>
 
         <DragOverlay>
@@ -470,18 +472,20 @@ export default function KanbanBoard() {
       </DndContext>
 
       {isLoading && (
-        <div className="flex gap-4 overflow-x-auto pb-6 pt-1 -mx-2 px-2 custom-scrollbar">
-          {COLUMNS.map(col => (
-            <div key={col.key} className="kanban-column animate-pulse">
-              <div className="h-4 bg-inset rounded w-1/2 mb-4"></div>
-              {[1, 2, 3].map(i => (
-                <div key={i} className="card p-3 space-y-2">
-                  <div className="h-3 bg-inset rounded w-3/4"></div>
-                  <div className="h-3 bg-inset rounded w-1/2"></div>
-                </div>
-              ))}
-            </div>
-          ))}
+        <div className="top-scrollbar-container custom-scrollbar pt-2 pb-6 -mx-2 px-2">
+          <div className="top-scrollbar-content flex gap-4">
+            {COLUMNS.map(col => (
+              <div key={col.key} className="kanban-column animate-pulse">
+                <div className="h-4 bg-inset rounded w-1/2 mb-4"></div>
+                {[1, 2, 3].map(i => (
+                  <div key={i} className="card p-3 space-y-2">
+                    <div className="h-3 bg-inset rounded w-3/4"></div>
+                    <div className="h-3 bg-inset rounded w-1/2"></div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

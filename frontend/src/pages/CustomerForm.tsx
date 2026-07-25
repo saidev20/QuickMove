@@ -150,7 +150,7 @@ export default function CustomerForm() {
               </div>
               <div>
                 <label className="label">Budget (per month)</label>
-                <input type="text" className="input" placeholder="e.g., 15000-20000"
+                <input type="text" className="input" placeholder="e.g., ₹15,000 - ₹25,000"
                   value={form.budget} onChange={e => updateField('budget', e.target.value)} />
               </div>
               <div>
