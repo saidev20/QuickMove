@@ -9,7 +9,7 @@ import type {
   AIRisk, AIRecommendation, AIDailySummary,
 } from '@/types';
 
-const BASE = '/api';
+const BASE = import.meta.env.VITE_API_URL || '/api';
 
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${url}`, {
